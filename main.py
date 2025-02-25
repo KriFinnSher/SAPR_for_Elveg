@@ -61,7 +61,7 @@ class App(tk.Tk):
         btn_plus = tk.Button(self.scroll_frame, text="+", width=3, command=lambda: self.add_line())
         btn_minus = tk.Button(self.scroll_frame, text="-", width=3, command=lambda: self.del_line())
         btn_plus.grid(row=1, column=8, padx=5)
-        btn_minus.grid(row=1, column=9, padx=5)
+        btn_minus.grid(row=1, column=9)
 
         # === Секция "Опоры" ===
         frame_supports = tk.LabelFrame(main_frame, text="Опоры", padx=5, pady=5)
@@ -77,7 +77,7 @@ class App(tk.Tk):
         frame_file = tk.LabelFrame(main_frame, text="Файл", padx=5, pady=5)
         frame_file.grid(row=1, column=1, sticky="nsew", padx=5, pady=5)
 
-        btn_open = tk.Button(frame_file, text="Открыть", command=lambda: self.file_open())
+        btn_open = tk.Button(frame_file, text=" Открыть  ", command=lambda: self.file_open())
         btn_save = tk.Button(frame_file, text="Сохранить", command=lambda: self.file_save())
         btn_open.pack(padx=5, pady=(45, 5))
         btn_save.pack(padx=5, pady=5)
@@ -132,9 +132,9 @@ class App(tk.Tk):
             e.grid(row=ster + 2, column=i + 1, padx=5, pady=5)
             temp_row.append(e)
             if i in (0, 1, 6):
-                e.config(validate='all')
+                e.config(validate='all', validatecommand=self.c3)
             else:
-                e.config(validate='all')
+                e.config(validate='all', validatecommand=self.c2)
         self.lines.append(temp_row)
 
     def del_line(self):
